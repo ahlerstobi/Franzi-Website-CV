@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franziska Steinheuer | Head of Brand & Content</title>
+    <style>
+        /* CSS VARIABLEN FÜR REIN-ESTHETISCHES DESIGN */
+        :root {
+            --primary-color: #0b1a29;       /* Tiefes, professionelles Dunkelblau */
+            --accent-color: #d4af37;        /* Elegantes Matt-Gold für Awards & Highlights */
+            --bg-light: #f8f9fa;            /* Heller Sektions-Hintergrund */
+            --text-dark: #2d3748;           /* Gut lesbarer dunkler Text */
+            --text-muted: #718096;         /* Für Daten und Untertitel */
+            --white: #ffffff;
+            --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* NAVIGATION */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* SEKTIONEN STANDARD */
+        section {
+            padding: 100px 20px 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-bg {
+            background-color: var(--bg-light);
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 12px auto 0 auto;
+        }
+
+        /* HERO SEKTION */
+        #home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 85vh;
+            padding-top: 120px;
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        #home .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #home .description {
+            font-size: 1.15rem;
+            max-width: 700px;
+            color: var(--text-dark);
+            margin-bottom: 35px;
+        }
+
+        /* TIMELINE (ERFAHRUNG & BILDUNG) */
+        .timeline {
+            position: relative;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 25px 30px;
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.2s;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .timeline-company {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content ul {
+            list-style-type: square;
+            margin-left: 20px;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .timeline-content li {
+            margin-bottom: 6px;
+        }
+
+        /* SKILLS SEKTION */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .skill-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border: 1px solid #edf2f7;
+        }
+
+        .skill-box h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 6px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* AWARDS SEKTION */
+        .award-card {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 850px;
+            margin: 0 auto;
+            border: 1px solid #edf2f7;
+        }
+
+        .award-logo {
+            flex: 0 0 160px;
+            max-width: 160px;
+            margin-right: 40px;
+        }
+
+        .award-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .award-info h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* REFERENZEN (VIDEO) */
+        .video-container {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* FOOTER & CONTACT */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            margin: 20px 0;
+            font-size: 1rem;
+            color: #cbd5e0;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #0077b5;
+            color: var(--white);
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .linkedin-btn:hover {
+            background-color: #005988;
+            transform: translateY(-3px);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            #home h1 { font-size: 2.4rem; }
+            .timeline-header { flex-direction: column; }
+            .timeline-date { margin-top: 5px; }
+            .award-card { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .award-logo { margin-right: 0; margin-bottom: 25px; max-width: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <div class="logo">FS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Erfahrung</a></li>
+                <li><a href="#skills">Kompetenzen</a></li>
+                <li><a href="#awards">Auszeichnungen</a></li>
+                <li><a href="#portfolio">Referenzen</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SEKTION -->
+    <section id="home">
+        <h1>Franziska Steinheuer</h1>
+        <div class="subtitle">Head of Brand & Content</div>
+        <p class="description">
+            Erfahrene und marktorientierte Marketingleiterin mit über 6 Jahren Erfolg in der Skalierung von B2B Health-Tech-Unternehmen sowie im internationalen B2C Corporate Brand- und Eigenmarken-Wachstum in der DACH- & CEE-Region.
+        </p>
+    </section>
+
+    <!-- BERUFLICHE ERFAHRUNG -->
+    <div class="section-bg" id="experience">
+        <section>
+            <h2 class="section-title">Beruflicher Werdegang</h2>
+            <div class="timeline">
+
+                <!-- Doctolib -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">Head of Brand & Content B2B Marketing</h3>
+                            <div class="timeline-company">Doctolib GmbH, Berlin</div>
+                        </div>
+                        <div class="timeline-date">2025 – Heute</div>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Führung eines crossfunktionalen Teams von über 6 Mitarbeitern in den Regionen DACH & CEE.</li>
+                            <li>Verantwortung und Umsetzung strategischer Brand- & Content-Kampagnen mit Fokus auf Lead-Generierung, Pipeline-Wachstum und Marktexpansion.</li>
+                            <li>Steigerung der Markenbekanntheit um +30% YoY durch reichweitenstarke Multi-Channel-Kampagnen im digitalen Gesundheitsmarkt.</li>
+                            <li>Datengetriebene Optimierung von Kampagnen-Performances über Paid, Owned und Earned Media Kanäle hinweg.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kaufland 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">Head of Int. Brand Management & CSR Communication</h3>
+                            <div class="timeline-company">Kaufland Stiftung & Co. KG, Heilbronn</div>
+                        </div>
+                        <div class="timeline-date">2022 – 2025</div>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Internationale Markensteuerung und CSR-Kommunikation über diverse europäische Märkte hinweg.</li>
+                            <li>Koordination globaler Markenziele im Einklang mit lokalen Business-Anforderungen in Zentral- und Osteuropa (CEE).</li>
+                            <li>Führung internationaler Teams und enge Abstimmung mit dem C-Level zur strategischen Positionierung.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kaufland 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">Strategic Assistant to the CMO</h3>
+                            <div class="timeline-company">Kaufland Stiftung & Co. KG, Heilbronn</div>
+                        </div>
+                        <div class="timeline-date">2021 – 2022</div>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Strategische Beratung des CMOs und der Regionaldirektoren bei zukunftsweisenden Marketing- und Kommunikationsentscheidungen.</li>
+                            <li>Aufbau und Etablierung KPI-gestützter Controlling-Systeme für globale Marketing-Frameworks von Grund auf.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kaufland 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">Junior Brand Manager</h3>
+                            <div class="timeline-company">Kaufland Stiftung & Co. KG, Heilbronn</div>
+                        </div>
+                        <div class="timeline-date">1921 – 2021</div>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Erfolgreiche Launches neuer Eigenmarken sowie Steuerung einer präzisen Portfolio-Marketingstrategie.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ältere Stationen zusammengefasst für Übersichtlichkeit -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-title">Frühere Stationen im Brand- & Projektmanagement</h3>
+                            <div class="timeline-company">eSpring GmbH, CPA! Agentur, Purino Vintage Foods</div>
+                        </div>
+                        <div class="timeline-date">2015 – 2019</div>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li><strong>eSpring GmbH (2018–2019):</strong> Brand Manager Online Marketing.</li>
+                            <li><strong>CPA! Agentur (2016–2018):</strong> Projektassistenz im Rahmen eines dualen Studiums.</li>
+                            <li><strong>Purino Vintage Foods (2015–2016):</strong> Stellvertretende Restaurantleitung im dualen Studium.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- SKILLS & TOOLS -->
+    <section id="skills">
+        <h2 class="section-title">Kompetenzen & Tools</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <h3>Top Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag">Brand Development</span>
+                    <span class="tag">Team Management & Leadership</span>
+                    <span class="tag">AI-driven Content Workflows</span>
+                    <span class="tag">Campaign Execution</span>
+                    <span class="tag">Cross-functional Collaboration</span>
+                    <span class="tag">Strategic Policy Communication</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h3>Tools & Tech-Stack</h3>
+                <div class="skill-tags">
+                    <span class="tag">Figma</span>
+                    <span class="tag">Canva</span>
+                    <span class="tag">Braze</span>
+                    <span class="tag">WordPress</span>
+                    <span class="tag">Adobe Suite</span>
+                    <span class="tag">Semrush</span>
+                    <span class="tag">AI-Tools (Claude, GPT, Firefly, Perplexity)</span>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h3>Ausbildung & Sprachen</h3>
+                <div class="skill-tags">
+                    <span class="tag">M.A. Marketing (Note 1,4) – DHBW CAS</span>
+                    <span class="tag">B.A. Food/Business Management – DHBW</span>
+                    <span class="tag">Deutsch (Muttersprache)</span>
+                    <span class="tag">Englisch (C2)</span>
+                    <span class="tag">Französisch (A1)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUSZEICHNUNGEN (GERMAN BRAND AWARD) -->
+    <div class="section-bg" id="awards">
+        <section>
+            <h2 class="section-title">Auszeichnungen</h2>
+            <div class="award-card">
+                <div class="award-logo">
+                    <img src="https://www.german-brand-award.com/fileadmin/templates/images/GBA24_Winner_Logo.svg" alt="German Brand Award Winner Logo">
+                </div>
+                <div class="award-info">
+                    <h3>German Brand Award</h3>
+                    <p>Auszeichnung für exzellente Markenführung, innovative Kampagnenstrukturen und nachweisbare Markteffekte. Bestätigung der strategischen Kompetenz in der Konzeptionierung reichweitenstarker und zielgruppenrelevanter Markenidentitäten im internationalen Umfeld.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- REFERENZEN / VIDEO -->
+    <section id="portfolio">
+        <h2 class="section-title">Referenzen & Video-Arbeiten</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/FBjZ0LuS8_o" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER & KONTAKT -->
+    <footer id="contact">
+        <h2>Kontakt aufnehmen</h2>
+        <p class="contact-info">
+            E-Mail: <a href="mailto:steinheuerisch@gmail.com">steinheuerisch@gmail.com</a> | Mobil: <a href="tel:+491736535576">+49 173 6535576</a>
+        </p>
+
+        <a href="https://www.linkedin.com/in/franziska-steinheuer/" target="_blank" class="linkedin-btn">
+            Profil auf LinkedIn ansehen
+        </a>
+
+        <p style="margin-top: 40px; font-size: 0.8rem; color: #718096;">&copy; 2026 Franziska Steinheuer. Erstellt für professionelle Repräsentanz.</p>
+    </footer>
+
+</body>
+</html>
