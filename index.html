@@ -3,551 +3,1111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Franziska Steinheuer | Head of Brand & Content</title>
+    <title>Franziska Steinheuer | Head of Brand &amp; Content</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS VARIABLEN FÜR REIN-ESTHETISCHES DESIGN */
+        /* ================================================
+           DESIGN TOKENS
+        ================================================ */
         :root {
-            --primary-color: #0b1a29;       /* Tiefes, professionelles Dunkelblau */
-            --accent-color: #d4af37;        /* Elegantes Matt-Gold für Awards & Highlights */
-            --bg-light: #f8f9fa;            /* Heller Sektions-Hintergrund */
-            --text-dark: #2d3748;           /* Gut lesbarer dunkler Text */
-            --text-muted: #718096;         /* Für Daten und Untertitel */
-            --white: #ffffff;
-            --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            --navy:         #0a1628;
+            --navy-mid:     #152238;
+            --navy-light:   #1e3356;
+            --gold:         #c9a84c;
+            --gold-dim:     rgba(201,168,76,0.18);
+            --gold-glow:    rgba(201,168,76,0.07);
+            --gray-bg:      #f4f6f9;
+            --gray-border:  #e8ecf2;
+            --text:         #1a202c;
+            --text-mid:     #4a5568;
+            --text-muted:   #718096;
+            --white:        #ffffff;
+            --display:      'Playfair Display', Georgia, serif;
+            --body:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --ease:         cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
+        /* ================================================
+           RESET & BASE
+        ================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: var(--font-main);
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--white);
+            font-family: var(--body);
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* NAVIGATION */
+        /* ================================================
+           SCROLL REVEAL
+        ================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible         { opacity: 1; transform: none; }
+        .reveal-delay-1         { transition-delay: 0.12s; }
+        .reveal-delay-2         { transition-delay: 0.24s; }
+        .reveal-delay-3         { transition-delay: 0.36s; }
+        .reveal-delay-4         { transition-delay: 0.48s; }
+
+        /* ================================================
+           NAVIGATION
+        ================================================ */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 1000;
+            transition: background 0.4s, box-shadow 0.4s;
+        }
+        header.scrolled {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 0 var(--gray-border);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 24px 36px;
+            transition: padding 0.4s var(--ease);
         }
+        header.scrolled nav { padding-top: 16px; padding-bottom: 16px; }
 
         .logo {
+            font-family: var(--display);
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            color: var(--primary-color);
-            text-transform: uppercase;
+            color: var(--white);
+            letter-spacing: 3px;
+            transition: color 0.4s;
+            text-decoration: none;
         }
+        header.scrolled .logo { color: var(--navy); }
 
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 36px;
+            align-items: center;
         }
-
-        .nav-links li {
-            margin-left: 25px;
-        }
-
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.75);
             transition: color 0.3s;
+            position: relative;
         }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* SEKTIONEN STANDARD */
-        section {
-            padding: 100px 20px 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-bg {
-            background-color: var(--bg-light);
-            width: 100%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .section-title::after {
+        .nav-links a::after {
             content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 12px auto 0 auto;
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s var(--ease);
         }
+        .nav-links a:hover,
+        .nav-links a.active          { color: var(--gold); }
+        .nav-links a:hover::after,
+        .nav-links a.active::after   { width: 100%; }
+        header.scrolled .nav-links a { color: var(--text-mid); }
+        header.scrolled .nav-links a:hover,
+        header.scrolled .nav-links a.active { color: var(--gold); }
 
-        /* HERO SEKTION */
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform 0.3s var(--ease), opacity 0.3s, background 0.4s;
+        }
+        header.scrolled .hamburger span { background: var(--navy); }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile fullscreen menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--navy);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            font-family: var(--display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ================================================
+           HERO
+        ================================================ */
         #home {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            min-height: 85vh;
-            padding-top: 120px;
-        }
-
-        #home h1 {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        #home .subtitle {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        #home .description {
-            font-size: 1.15rem;
-            max-width: 700px;
-            color: var(--text-dark);
-            margin-bottom: 35px;
-        }
-
-        /* TIMELINE (ERFAHRUNG & BILDUNG) */
-        .timeline {
+            padding: 140px 32px 100px;
             position: relative;
-            max-width: 850px;
-            margin: 0 auto;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 12% 65%, rgba(201,168,76,0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 88% 20%, rgba(30,51,86,0.5) 0%, transparent 55%),
+                linear-gradient(155deg, #091526 0%, #152238 55%, #0c1d34 100%);
+        }
+        /* Dot-grid overlay */
+        #home::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(201,168,76,0.09) 1px, transparent 1px);
+            background-size: 44px 44px;
+            pointer-events: none;
+        }
+        /* Ambient glow */
+        #home::after {
+            content: '';
+            position: absolute;
+            width: 700px; height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,168,76,0.035) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
 
-        .timeline-item {
-            padding: 25px 30px;
-            background: var(--white);
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.2s;
-        }
-
-        .timeline-item:hover {
-            transform: translateY(-2px);
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .timeline-date {
+        .hero-eyebrow {
+            font-size: 0.72rem;
             font-weight: 600;
-            color: var(--accent-color);
-            font-size: 0.95rem;
-            white-space: nowrap;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 22px;
+            position: relative; z-index: 1;
+            animation: fadeUp 0.9s var(--ease) 0.1s both;
+        }
+        #home h1 {
+            font-family: var(--display);
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.08;
+            margin-bottom: 0;
+            letter-spacing: -1.5px;
+            position: relative; z-index: 1;
+            animation: fadeUp 0.9s var(--ease) 0.25s both;
         }
 
-        .timeline-title {
-            font-size: 1.25rem;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .timeline-company {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        .timeline-content ul {
-            list-style-type: square;
-            margin-left: 20px;
-            color: #4a5568;
-            font-size: 0.95rem;
-        }
-
-        .timeline-content li {
-            margin-bottom: 6px;
-        }
-
-        /* SKILLS SEKTION */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        .skill-box {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-            border: 1px solid #edf2f7;
-        }
-
-        .skill-box h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 6px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background-color: var(--bg-light);
-            color: var(--primary-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* AWARDS SEKTION */
-        .award-card {
+        /* Gold divider with diamond */
+        .hero-divider {
             display: flex;
             align-items: center;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 850px;
-            margin: 0 auto;
-            border: 1px solid #edf2f7;
+            gap: 14px;
+            justify-content: center;
+            margin: 22px auto 18px;
+            position: relative; z-index: 1;
+            animation: fadeUp 0.9s var(--ease) 0.35s both;
         }
-
-        .award-logo {
-            flex: 0 0 160px;
-            max-width: 160px;
-            margin-right: 40px;
+        .hero-divider::before,
+        .hero-divider::after {
+            content: '';
+            width: 80px; height: 1px;
         }
+        .hero-divider::before { background: linear-gradient(to right, transparent, var(--gold)); }
+        .hero-divider::after  { background: linear-gradient(to left, transparent, var(--gold)); }
+        .hero-divider span { color: var(--gold); font-size: 0.85rem; }
 
-        .award-logo img {
-            width: 100%;
-            height: auto;
+        .hero-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.15rem);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 32px;
+            position: relative; z-index: 1;
+            animation: fadeUp 0.9s var(--ease) 0.4s both;
         }
-
-        .award-info h3 {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        /* REFERENZEN (VIDEO) */
-        .video-container {
-            max-width: 850px;
-            margin: 0 auto;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* FOOTER & CONTACT */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        footer h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .contact-info {
-            margin: 20px 0;
+        .hero-description {
             font-size: 1rem;
-            color: #cbd5e0;
+            line-height: 1.85;
+            max-width: 580px;
+            color: rgba(255,255,255,0.48);
+            margin-bottom: 48px;
+            position: relative; z-index: 1;
+            animation: fadeUp 0.9s var(--ease) 0.5s both;
         }
 
-        .contact-info a {
-            color: var(--white);
-            text-decoration: none;
+        /* CTA Buttons */
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative; z-index: 1;
+            animation: fadeUp 0.9s var(--ease) 0.6s both;
         }
-
-        .linkedin-btn {
+        .btn-gold {
             display: inline-flex;
             align-items: center;
-            background-color: #0077b5;
-            color: var(--white);
+            gap: 9px;
+            background: var(--gold);
+            color: var(--navy);
             text-decoration: none;
-            padding: 14px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-top: 15px;
-            letter-spacing: 0.5px;
-            transition: transform 0.3s, background-color 0.3s;
+            padding: 15px 34px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s;
         }
-
-        .linkedin-btn:hover {
-            background-color: #005988;
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(201,168,76,0.35);
+        }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: transparent;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 15px 34px;
+            border-radius: 3px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: border-color 0.3s, color 0.3s, transform 0.3s var(--ease);
+        }
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
             transform: translateY(-3px);
         }
 
-        /* RESPONSIVE DESIGN */
+        /* Scroll indicator */
+        .scroll-cue {
+            position: absolute;
+            bottom: 40px; left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            z-index: 1;
+            animation: fadeDown 1.2s var(--ease) 1s both;
+        }
+        .scroll-cue-line {
+            width: 1px; height: 56px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollLine 2.4s ease-in-out infinite;
+        }
+        .scroll-cue-label {
+            font-size: 0.62rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+        @keyframes scrollLine {
+            0%, 100% { transform: scaleY(1); transform-origin: top; opacity: 0.7; }
+            50%       { transform: scaleY(0.4); transform-origin: bottom; opacity: 0.3; }
+        }
+
+        /* ================================================
+           HERO ANIMATIONS
+        ================================================ */
+        @keyframes fadeUp   { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform:none; } }
+        @keyframes fadeDown { from { opacity:0; transform: translateX(-50%) translateY(-12px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+
+        /* ================================================
+           STATS STRIP
+        ================================================ */
+        .stats-strip {
+            background: var(--navy-mid);
+            border-top: 1px solid rgba(201,168,76,0.12);
+            border-bottom: 1px solid rgba(201,168,76,0.12);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            padding: 40px 20px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.3s;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-item:hover { background: rgba(201,168,76,0.04); }
+        .stat-number {
+            font-family: var(--display);
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 0.72rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.38);
+            font-weight: 500;
+        }
+
+        /* ================================================
+           SHARED LAYOUT
+        ================================================ */
+        .section-wrap { padding: 96px 36px; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+
+        .section-eyebrow {
+            display: block;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--display);
+            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            color: var(--navy);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 64px;
+            line-height: 1.2;
+        }
+        .section-title-light { color: var(--white); }
+
+        /* ================================================
+           TIMELINE
+        ================================================ */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 10px; bottom: 10px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--gold) 0%, rgba(201,168,76,0.08) 100%);
+        }
+        .timeline-item {
+            position: relative;
+            padding: 28px 32px;
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--gray-border);
+            transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.3s;
+        }
+        /* Gold dot on the timeline line */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px; top: 36px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 0 3px var(--gray-bg), 0 0 0 5px rgba(201,168,76,0.25);
+        }
+        .timeline-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.07);
+            border-color: rgba(201,168,76,0.4);
+        }
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 1.1rem;
+            color: var(--navy);
+            font-weight: 700;
+            line-height: 1.35;
+            flex: 1;
+        }
+        .timeline-badge {
+            display: inline-block;
+            background: var(--gold-dim);
+            color: #7a5c18;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .timeline-company {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 14px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .timeline-company::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 50%;
+            width: 12px; height: 1px;
+            background: var(--gold);
+        }
+        .timeline-content ul { list-style: none; }
+        .timeline-content li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--text-mid);
+        }
+        .timeline-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.7rem;
+            top: 3px;
+        }
+
+        /* ================================================
+           SKILLS
+        ================================================ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .skill-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            padding: 28px 24px;
+            transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 52px rgba(0,0,0,0.07);
+            border-color: rgba(201,168,76,0.4);
+        }
+        .skill-icon { font-size: 1.5rem; margin-bottom: 14px; display: block; }
+        .skill-card h3 {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+        .tag {
+            background: var(--gray-bg);
+            color: var(--text-mid);
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+            cursor: default;
+        }
+        .tag:hover {
+            background: var(--gold-dim);
+            color: var(--navy);
+            border-color: rgba(201,168,76,0.35);
+        }
+
+        /* ================================================
+           AWARDS (dark prestige section)
+        ================================================ */
+        .awards-section {
+            background:
+                radial-gradient(ellipse at 85% 40%, rgba(201,168,76,0.05) 0%, transparent 55%),
+                linear-gradient(150deg, #091526 0%, #111f38 100%);
+        }
+        .award-card {
+            display: grid;
+            grid-template-columns: 148px 1fr;
+            gap: 52px;
+            align-items: center;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(201,168,76,0.18);
+            border-radius: 12px;
+            padding: 52px;
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+        .award-card:hover {
+            border-color: rgba(201,168,76,0.42);
+            box-shadow: 0 0 80px rgba(201,168,76,0.07);
+        }
+        /* Shimmer line */
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%);
+        }
+        .award-logo-wrap img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 6px 20px rgba(201,168,76,0.2));
+        }
+        .award-eyebrow {
+            font-size: 0.68rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .award-info h3 {
+            font-family: var(--display);
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .award-info p {
+            font-size: 0.93rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.85;
+        }
+
+        /* ================================================
+           VIDEO
+        ================================================ */
+        .video-wrapper { max-width: 860px; margin: 0 auto; }
+        .video-frame {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 24px 72px rgba(0,0,0,0.1);
+            border: 1px solid var(--gray-border);
+        }
+        .video-frame iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+        .video-caption {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ================================================
+           CONTACT / FOOTER
+        ================================================ */
+        .contact-section {
+            background: var(--navy);
+            padding: 100px 36px 60px;
+            text-align: center;
+            border-top: 1px solid rgba(201,168,76,0.1);
+        }
+        .contact-inner { max-width: 620px; margin: 0 auto; }
+        .contact-section h2 {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 18px;
+            line-height: 1.15;
+        }
+        .contact-section .lead {
+            font-size: 0.98rem;
+            color: rgba(255,255,255,0.42);
+            margin-bottom: 44px;
+            line-height: 1.85;
+        }
+        .contact-links {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 64px;
+        }
+        .btn-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 15px 28px;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+        }
+        .btn-email:hover {
+            background: rgba(255,255,255,0.09);
+            border-color: rgba(255,255,255,0.22);
+            transform: translateY(-2px);
+        }
+        .btn-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: #0077b5;
+            color: var(--white);
+            text-decoration: none;
+            padding: 15px 32px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
+        }
+        .btn-linkedin:hover {
+            background: #005d8f;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(0,119,181,0.4);
+        }
+        .footer-rule {
+            width: 48px; height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 0 auto 24px;
+        }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.18);
+            letter-spacing: 1.5px;
+        }
+
+        /* ================================================
+           RESPONSIVE
+        ================================================ */
+        @media (max-width: 900px) {
+            .stats-grid    { grid-template-columns: repeat(2, 1fr); }
+            .skills-grid   { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            #home h1 { font-size: 2.4rem; }
-            .timeline-header { flex-direction: column; }
-            .timeline-date { margin-top: 5px; }
-            .award-card { flex-direction: column; text-align: center; padding: 30px 20px; }
-            .award-logo { margin-right: 0; margin-bottom: 25px; max-width: 120px; }
+            .nav-links     { display: none; }
+            .hamburger     { display: flex; }
+            nav            { padding: 18px 20px; }
+            .section-wrap  { padding: 72px 20px; }
+            #home          { padding: 120px 20px 80px; }
+            .stats-grid    { grid-template-columns: repeat(2, 1fr); }
+            .timeline      { padding-left: 20px; }
+            .timeline-item { padding: 22px 18px; }
+            .timeline-item::before { left: -27px; }
+            .award-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 36px 24px;
+                gap: 28px;
+            }
+            .award-logo-wrap { margin: 0 auto; width: 90px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .contact-links { flex-direction: column; align-items: center; }
+        }
+
+        @media (max-width: 480px) {
+            #home h1 { font-size: 2.3rem; letter-spacing: -0.5px; }
+            .hero-ctas { flex-direction: column; align-items: stretch; }
+            .btn-gold, .btn-ghost { justify-content: center; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- MOBILE OVERLAY MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home"       onclick="closeMobile()">Home</a>
+        <a href="#experience" onclick="closeMobile()">Erfahrung</a>
+        <a href="#skills"     onclick="closeMobile()">Kompetenzen</a>
+        <a href="#awards"     onclick="closeMobile()">Awards</a>
+        <a href="#portfolio"  onclick="closeMobile()">Referenzen</a>
+        <a href="#contact"    onclick="closeMobile()">Kontakt</a>
+    </div>
+
     <!-- NAVIGATION -->
-    <header>
+    <header id="mainHeader">
         <nav>
-            <div class="logo">FS</div>
-            <ul class="nav-links">
+            <a href="#home" class="logo">FS</a>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#experience">Erfahrung</a></li>
                 <li><a href="#skills">Kompetenzen</a></li>
-                <li><a href="#awards">Auszeichnungen</a></li>
+                <li><a href="#awards">Awards</a></li>
                 <li><a href="#portfolio">Referenzen</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
-    <!-- HERO SEKTION -->
+    <!-- ════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════ -->
     <section id="home">
+        <div class="hero-eyebrow">Brand Strategy &nbsp;·&nbsp; Digital Marketing &nbsp;·&nbsp; Leadership</div>
         <h1>Franziska Steinheuer</h1>
-        <div class="subtitle">Head of Brand & Content</div>
-        <p class="description">
-            Erfahrene und marktorientierte Marketingleiterin mit über 6 Jahren Erfolg in der Skalierung von B2B Health-Tech-Unternehmen sowie im internationalen B2C Corporate Brand- und Eigenmarken-Wachstum in der DACH- & CEE-Region.
+        <div class="hero-divider"><span>✦</span></div>
+        <div class="hero-subtitle">Head of Brand &amp; Content Marketing</div>
+        <p class="hero-description">
+            Über 6 Jahre Erfahrung in strategischer Markenführung für B2B Health-Tech und internationales
+            Corporate Brand Management – von DACH bis CEE. Nachweislich messbare Ergebnisse.
         </p>
+        <div class="hero-ctas">
+            <a href="https://www.linkedin.com/in/franziska-steinheuer/" target="_blank" rel="noopener" class="btn-gold">
+                <!-- LinkedIn icon inline -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn ansehen
+            </a>
+            <a href="#contact" class="btn-ghost">Kontakt aufnehmen</a>
+        </div>
+        <div class="scroll-cue" aria-hidden="true">
+            <div class="scroll-cue-line"></div>
+            <span class="scroll-cue-label">Scroll</span>
+        </div>
     </section>
 
-    <!-- BERUFLICHE ERFAHRUNG -->
-    <div class="section-bg" id="experience">
-        <section>
-            <h2 class="section-title">Beruflicher Werdegang</h2>
-            <div class="timeline">
+    <!-- ════════════════════════════════════════
+         STATS STRIP
+    ════════════════════════════════════════ -->
+    <div class="stats-strip">
+        <div class="stats-grid">
+            <div class="stat-item reveal">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Jahre Erfahrung</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-1">
+                <div class="stat-number">DACH</div>
+                <div class="stat-label">+ CEE Märkte</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-2">
+                <div class="stat-number">+30%</div>
+                <div class="stat-label">Brand Awareness YoY</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-3">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">Teamgröße geführt</div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Doctolib -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div>
-                            <h3 class="timeline-title">Head of Brand & Content B2B Marketing</h3>
-                            <div class="timeline-company">Doctolib GmbH, Berlin</div>
+    <!-- ════════════════════════════════════════
+         ERFAHRUNG
+    ════════════════════════════════════════ -->
+    <div id="experience" style="background: var(--gray-bg);">
+        <div class="section-wrap">
+            <div class="section-inner">
+                <span class="section-eyebrow">Beruflicher Werdegang</span>
+                <h2 class="section-title">Erfahrung</h2>
+                <div class="timeline">
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-meta">
+                            <h3 class="timeline-title">Head of Brand &amp; Content B2B Marketing</h3>
+                            <span class="timeline-badge">2025 – Heute</span>
                         </div>
-                        <div class="timeline-date">2025 – Heute</div>
+                        <div class="timeline-company">Doctolib GmbH &nbsp;·&nbsp; Berlin</div>
+                        <div class="timeline-content"><ul>
+                            <li>Führung eines crossfunktionalen Teams von 6+ Mitarbeitern in DACH &amp; CEE.</li>
+                            <li>Strategische Brand- &amp; Content-Kampagnen mit Fokus auf Lead-Generierung, Pipeline-Wachstum und Marktexpansion.</li>
+                            <li>Steigerung der Markenbekanntheit um +30% YoY durch reichweitenstarke Multi-Channel-Kampagnen.</li>
+                            <li>Datengetriebene Kampagnen-Optimierung über Paid, Owned und Earned Media hinweg.</li>
+                        </ul></div>
                     </div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Führung eines crossfunktionalen Teams von über 6 Mitarbeitern in den Regionen DACH & CEE.</li>
-                            <li>Verantwortung und Umsetzung strategischer Brand- & Content-Kampagnen mit Fokus auf Lead-Generierung, Pipeline-Wachstum und Marktexpansion.</li>
-                            <li>Steigerung der Markenbekanntheit um +30% YoY durch reichweitenstarke Multi-Channel-Kampagnen im digitalen Gesundheitsmarkt.</li>
-                            <li>Datengetriebene Optimierung von Kampagnen-Performances über Paid, Owned und Earned Media Kanäle hinweg.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Kaufland 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div>
-                            <h3 class="timeline-title">Head of Int. Brand Management & CSR Communication</h3>
-                            <div class="timeline-company">Kaufland Stiftung & Co. KG, Heilbronn</div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-meta">
+                            <h3 class="timeline-title">Head of Int. Brand Management &amp; CSR Communication</h3>
+                            <span class="timeline-badge">2022 – 2025</span>
                         </div>
-                        <div class="timeline-date">2022 – 2025</div>
+                        <div class="timeline-company">Kaufland Stiftung &amp; Co. KG &nbsp;·&nbsp; Heilbronn</div>
+                        <div class="timeline-content"><ul>
+                            <li>Internationale Markensteuerung und CSR-Kommunikation über europäische Märkte hinweg.</li>
+                            <li>Koordination globaler Markenziele im Einklang mit lokalen Business-Anforderungen in CEE.</li>
+                            <li>Enge Abstimmung mit dem C-Level zur strategischen Positionierung der Marke.</li>
+                        </ul></div>
                     </div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Internationale Markensteuerung und CSR-Kommunikation über diverse europäische Märkte hinweg.</li>
-                            <li>Koordination globaler Markenziele im Einklang mit lokalen Business-Anforderungen in Zentral- und Osteuropa (CEE).</li>
-                            <li>Führung internationaler Teams und enge Abstimmung mit dem C-Level zur strategischen Positionierung.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Kaufland 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-meta">
                             <h3 class="timeline-title">Strategic Assistant to the CMO</h3>
-                            <div class="timeline-company">Kaufland Stiftung & Co. KG, Heilbronn</div>
+                            <span class="timeline-badge">2021 – 2022</span>
                         </div>
-                        <div class="timeline-date">2021 – 2022</div>
+                        <div class="timeline-company">Kaufland Stiftung &amp; Co. KG &nbsp;·&nbsp; Heilbronn</div>
+                        <div class="timeline-content"><ul>
+                            <li>Strategische Beratung des CMOs und der Regionaldirektoren bei Marketing- und Kommunikationsentscheidungen.</li>
+                            <li>Aufbau KPI-gestützter Controlling-Systeme für globale Marketing-Frameworks von Grund auf.</li>
+                        </ul></div>
                     </div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Strategische Beratung des CMOs und der Regionaldirektoren bei zukunftsweisenden Marketing- und Kommunikationsentscheidungen.</li>
-                            <li>Aufbau und Etablierung KPI-gestützter Controlling-Systeme für globale Marketing-Frameworks von Grund auf.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Kaufland 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div>
+                    <!-- BUG FIX: Datum korrigiert von "1921 – 2021" auf "2019 – 2021" -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-meta">
                             <h3 class="timeline-title">Junior Brand Manager</h3>
-                            <div class="timeline-company">Kaufland Stiftung & Co. KG, Heilbronn</div>
+                            <span class="timeline-badge">2019 – 2021</span>
                         </div>
-                        <div class="timeline-date">1921 – 2021</div>
-                    </div>
-                    <div class="timeline-content">
-                        <ul>
+                        <div class="timeline-company">Kaufland Stiftung &amp; Co. KG &nbsp;·&nbsp; Heilbronn</div>
+                        <div class="timeline-content"><ul>
                             <li>Erfolgreiche Launches neuer Eigenmarken sowie Steuerung einer präzisen Portfolio-Marketingstrategie.</li>
-                        </ul>
+                        </ul></div>
                     </div>
-                </div>
 
-                <!-- Ältere Stationen zusammengefasst für Übersichtlichkeit -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <div>
-                            <h3 class="timeline-title">Frühere Stationen im Brand- & Projektmanagement</h3>
-                            <div class="timeline-company">eSpring GmbH, CPA! Agentur, Purino Vintage Foods</div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-meta">
+                            <h3 class="timeline-title">Frühere Stationen im Brand- &amp; Projektmanagement</h3>
+                            <span class="timeline-badge">2015 – 2019</span>
                         </div>
-                        <div class="timeline-date">2015 – 2019</div>
-                    </div>
-                    <div class="timeline-content">
-                        <ul>
+                        <div class="timeline-company">eSpring GmbH &nbsp;·&nbsp; CPA! Agentur &nbsp;·&nbsp; Purino Vintage Foods</div>
+                        <div class="timeline-content"><ul>
                             <li><strong>eSpring GmbH (2018–2019):</strong> Brand Manager Online Marketing.</li>
-                            <li><strong>CPA! Agentur (2016–2018):</strong> Projektassistenz im Rahmen eines dualen Studiums.</li>
-                            <li><strong>Purino Vintage Foods (2015–2016):</strong> Stellvertretende Restaurantleitung im dualen Studium.</li>
-                        </ul>
+                            <li><strong>CPA! Agentur (2016–2018):</strong> Projektassistenz im dualen Studium.</li>
+                            <li><strong>Purino Vintage Foods (2015–2016):</strong> Stv. Restaurantleitung im dualen Studium.</li>
+                        </ul></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         SKILLS
+    ════════════════════════════════════════ -->
+    <div id="skills">
+        <div class="section-wrap">
+            <div class="section-inner">
+                <span class="section-eyebrow">Expertise</span>
+                <h2 class="section-title">Kompetenzen &amp; Tools</h2>
+                <div class="skills-grid">
+
+                    <div class="skill-card reveal">
+                        <span class="skill-icon">🎯</span>
+                        <h3>Core Skills</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Brand Development</span>
+                            <span class="tag">Team Leadership</span>
+                            <span class="tag">AI-driven Content Workflows</span>
+                            <span class="tag">Campaign Execution</span>
+                            <span class="tag">Cross-functional Collaboration</span>
+                            <span class="tag">Strategic Policy Communication</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal reveal-delay-1">
+                        <span class="skill-icon">⚡</span>
+                        <h3>Tools &amp; Tech-Stack</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Figma</span>
+                            <span class="tag">Canva</span>
+                            <span class="tag">Braze</span>
+                            <span class="tag">WordPress</span>
+                            <span class="tag">Adobe Suite</span>
+                            <span class="tag">Semrush</span>
+                            <span class="tag">Claude · GPT · Firefly</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card reveal reveal-delay-2">
+                        <span class="skill-icon">🎓</span>
+                        <h3>Ausbildung &amp; Sprachen</h3>
+                        <div class="skill-tags">
+                            <span class="tag">M.A. Marketing (1,4) – DHBW CAS</span>
+                            <span class="tag">B.A. Food/Business – DHBW</span>
+                            <span class="tag">Deutsch (Muttersprache)</span>
+                            <span class="tag">Englisch (C2)</span>
+                            <span class="tag">Französisch (A1)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         AWARDS (dark prestige section)
+    ════════════════════════════════════════ -->
+    <div id="awards" class="awards-section">
+        <div class="section-wrap">
+            <div class="section-inner">
+                <span class="section-eyebrow">Auszeichnungen</span>
+                <h2 class="section-title section-title-light">Anerkannt. Ausgezeichnet.</h2>
+
+                <!-- BUG FIX: Lokale SVG-Datei statt externem Hotlink -->
+                <div class="award-card reveal">
+                    <div class="award-logo-wrap">
+                        <img src="assets/award-logo.svg" alt="German Brand Award – Winner Logo (Platzhalter)">
+                    </div>
+                    <div class="award-info">
+                        <div class="award-eyebrow">Industrie-Auszeichnung</div>
+                        <h3>German Brand Award</h3>
+                        <p>Auszeichnung für exzellente Markenführung, innovative Kampagnenstrukturen und nachweisbare Markteffekte. Bestätigung der strategischen Kompetenz in der Konzeptionierung reichweitenstarker und zielgruppenrelevanter Markenidentitäten im internationalen Umfeld.</p>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </div>
     </div>
 
-    <!-- SKILLS & TOOLS -->
-    <section id="skills">
-        <h2 class="section-title">Kompetenzen & Tools</h2>
-        <div class="skills-container">
-            <div class="skill-box">
-                <h3>Top Skills</h3>
-                <div class="skill-tags">
-                    <span class="tag">Brand Development</span>
-                    <span class="tag">Team Management & Leadership</span>
-                    <span class="tag">AI-driven Content Workflows</span>
-                    <span class="tag">Campaign Execution</span>
-                    <span class="tag">Cross-functional Collaboration</span>
-                    <span class="tag">Strategic Policy Communication</span>
-                </div>
-            </div>
-            <div class="skill-box">
-                <h3>Tools & Tech-Stack</h3>
-                <div class="skill-tags">
-                    <span class="tag">Figma</span>
-                    <span class="tag">Canva</span>
-                    <span class="tag">Braze</span>
-                    <span class="tag">WordPress</span>
-                    <span class="tag">Adobe Suite</span>
-                    <span class="tag">Semrush</span>
-                    <span class="tag">AI-Tools (Claude, GPT, Firefly, Perplexity)</span>
-                </div>
-            </div>
-            <div class="skill-box">
-                <h3>Ausbildung & Sprachen</h3>
-                <div class="skill-tags">
-                    <span class="tag">M.A. Marketing (Note 1,4) – DHBW CAS</span>
-                    <span class="tag">B.A. Food/Business Management – DHBW</span>
-                    <span class="tag">Deutsch (Muttersprache)</span>
-                    <span class="tag">Englisch (C2)</span>
-                    <span class="tag">Französisch (A1)</span>
+    <!-- ════════════════════════════════════════
+         VIDEO / REFERENZEN
+    ════════════════════════════════════════ -->
+    <div id="portfolio" style="background: var(--gray-bg);">
+        <div class="section-wrap">
+            <div class="section-inner">
+                <span class="section-eyebrow">Portfolio</span>
+                <h2 class="section-title">Video-Arbeiten</h2>
+                <div class="video-wrapper reveal">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/FBjZ0LuS8_o"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            title="Kampagnen-Referenz – Franziska Steinheuer"
+                        ></iframe>
+                    </div>
+                    <p class="video-caption">Kampagnen-Referenz &nbsp;·&nbsp; Eigenproduktion</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- AUSZEICHNUNGEN (GERMAN BRAND AWARD) -->
-    <div class="section-bg" id="awards">
-        <section>
-            <h2 class="section-title">Auszeichnungen</h2>
-            <div class="award-card">
-                <div class="award-logo">
-                    <img src="https://www.german-brand-award.com/fileadmin/templates/images/GBA24_Winner_Logo.svg" alt="German Brand Award Winner Logo">
-                </div>
-                <div class="award-info">
-                    <h3>German Brand Award</h3>
-                    <p>Auszeichnung für exzellente Markenführung, innovative Kampagnenstrukturen und nachweisbare Markteffekte. Bestätigung der strategischen Kompetenz in der Konzeptionierung reichweitenstarker und zielgruppenrelevanter Markenidentitäten im internationalen Umfeld.</p>
-                </div>
-            </div>
-        </section>
     </div>
 
-    <!-- REFERENZEN / VIDEO -->
-    <section id="portfolio">
-        <h2 class="section-title">Referenzen & Video-Arbeiten</h2>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/FBjZ0LuS8_o" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- ════════════════════════════════════════
+         CONTACT / FOOTER
+         PRIVACY FIX: Telefonnummer entfernt – nur E-Mail + LinkedIn öffentlich
+    ════════════════════════════════════════ -->
+    <footer id="contact" class="contact-section">
+        <div class="contact-inner">
+            <span class="section-eyebrow">Kontakt</span>
+            <h2>Let's connect.</h2>
+            <p class="lead">
+                Offen für spannende Gespräche zu Brand-Strategie,<br>
+                Leadership und neuen Projekten.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:steinheuerisch@gmail.com" class="btn-email">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    steinheuerisch@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/franziska-steinheuer/" target="_blank" rel="noopener" class="btn-linkedin">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn Profil
+                </a>
+            </div>
+            <div class="footer-rule"></div>
+            <p class="footer-copy">&copy; 2026 Franziska Steinheuer &nbsp;·&nbsp; Erstellt für professionelle Repräsentanz</p>
         </div>
-    </section>
-
-    <!-- FOOTER & KONTAKT -->
-    <footer id="contact">
-        <h2>Kontakt aufnehmen</h2>
-        <p class="contact-info">
-            E-Mail: <a href="mailto:steinheuerisch@gmail.com">steinheuerisch@gmail.com</a> | Mobil: <a href="tel:+491736535576">+49 173 6535576</a>
-        </p>
-
-        <a href="https://www.linkedin.com/in/franziska-steinheuer/" target="_blank" class="linkedin-btn">
-            Profil auf LinkedIn ansehen
-        </a>
-
-        <p style="margin-top: 40px; font-size: 0.8rem; color: #718096;">&copy; 2026 Franziska Steinheuer. Erstellt für professionelle Repräsentanz.</p>
     </footer>
 
+    <script>
+        // ── Header: glass effect + active nav on scroll
+        const header   = document.getElementById('mainHeader');
+        const allLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('[id]');
+
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 130) current = sec.id;
+            });
+            allLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        }, { passive: true });
+
+        // ── Hamburger / mobile menu
+        const hamburger  = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        function closeMobile() {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ── Scroll reveal via IntersectionObserver
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" role="img" aria-label="German Brand Award – Winner Badge">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#e8d5a3"/>
+      <stop offset="40%"  stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#8a6520"/>
+    </linearGradient>
+    <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#a07820"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="94" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.6"/>
+  <!-- Inner ring -->
+  <circle cx="100" cy="100" r="84" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.4" stroke-dasharray="3 3"/>
+  <!-- Badge fill -->
+  <circle cx="100" cy="100" r="80" fill="#0a1628" opacity="0.05"/>
+
+  <!-- 12-point star / seal shape -->
+  <path d="
+    M100 22 L107 44 L128 30 L124 53 L147 50 L136 70
+    L158 78 L140 93 L158 108 L136 116 L147 136
+    L124 133 L128 156 L107 143 L100 165 L93 143
+    L72 156 L76 133 L53 136 L64 116 L42 108 L60 93
+    L42 78 L64 70 L53 50 L76 53 L72 30 L93 44 Z
+  " fill="url(#goldGrad)" opacity="0.15"/>
+
+  <!-- Star core -->
+  <path d="
+    M100 42 L107 64 L128 58 L116 77
+    L138 84 L120 97 L135 113 L113 112
+    L113 135 L100 120 L87 135 L87 112
+    L65 113 L80 97 L62 84 L84 77
+    L72 58 L93 64 Z
+  " fill="url(#goldGrad2)" opacity="0.9"/>
+
+  <!-- Centre circle -->
+  <circle cx="100" cy="97" r="18" fill="#0a1628"/>
+  <circle cx="100" cy="97" r="15" fill="none" stroke="url(#goldGrad)" stroke-width="1"/>
+  <text x="100" y="101" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#c9a84c">GBA</text>
+
+  <!-- GERMAN BRAND AWARD text arc (bottom label area) -->
+  <rect x="28" y="162" width="144" height="52" rx="6" fill="#0a1628" opacity="0.7"/>
+  <rect x="28" y="162" width="144" height="52" rx="6" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.5"/>
+
+  <text x="100" y="182" text-anchor="middle"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="8.5" font-weight="bold" letter-spacing="2.5"
+        fill="url(#goldGrad)">GERMAN BRAND</text>
+  <text x="100" y="196" text-anchor="middle"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="8.5" font-weight="bold" letter-spacing="2.5"
+        fill="url(#goldGrad)">AWARD</text>
+  <text x="100" y="209" text-anchor="middle"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="7" letter-spacing="4"
+        fill="#c9a84c" opacity="0.7">W I N N E R</text>
+</svg>
