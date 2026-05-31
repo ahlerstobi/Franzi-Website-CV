@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referenzen | Franziska Steinheuer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy:        #0a1628;
+            --navy-mid:    #152238;
+            --navy-light:  #1e3356;
+            --gold:        #c9a84c;
+            --gold-dim:    rgba(201,168,76,0.18);
+            --gold-glow:   rgba(201,168,76,0.07);
+            --gray-bg:     #f4f6f9;
+            --gray-border: #e8ecf2;
+            --text:        #1a202c;
+            --text-mid:    #4a5568;
+            --text-muted:  #718096;
+            --white:       #ffffff;
+            --display:     'Playfair Display', Georgia, serif;
+            --body:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--body);
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Scroll reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+        .reveal-delay-1 { transition-delay: 0.12s; }
+        .reveal-delay-2 { transition-delay: 0.24s; }
+        .reveal-delay-3 { transition-delay: 0.36s; }
+
+        /* ── Navigation ── */
+        header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 0 var(--gray-border);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 18px 36px;
+        }
+        .logo {
+            font-family: var(--display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-mid);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s var(--ease);
+        }
+        .nav-links a:hover,
+        .nav-links a.active          { color: var(--gold); }
+        .nav-links a:hover::after,
+        .nav-links a.active::after   { width: 100%; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--navy);
+            border-radius: 2px;
+            transition: transform 0.3s var(--ease), opacity 0.3s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--navy);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            font-family: var(--display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ── Page hero ── */
+        .page-hero {
+            padding: 140px 36px 80px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 15% 60%, rgba(201,168,76,0.06) 0%, transparent 50%),
+                linear-gradient(155deg, #091526 0%, #152238 55%, #0c1d34 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(201,168,76,0.08) 1px, transparent 1px);
+            background-size: 44px 44px;
+            pointer-events: none;
+        }
+        .page-hero-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            position: relative; z-index: 1;
+        }
+        .page-hero h1 {
+            font-family: var(--display);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            position: relative; z-index: 1;
+            margin-bottom: 16px;
+        }
+        .page-hero p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.45);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.8;
+            position: relative; z-index: 1;
+        }
+        .page-hero-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            justify-content: center;
+            margin: 18px auto;
+            position: relative; z-index: 1;
+        }
+        .page-hero-divider::before,
+        .page-hero-divider::after {
+            content: '';
+            width: 60px; height: 1px;
+        }
+        .page-hero-divider::before { background: linear-gradient(to right, transparent, var(--gold)); }
+        .page-hero-divider::after  { background: linear-gradient(to left,  transparent, var(--gold)); }
+        .page-hero-divider span { color: var(--gold); font-size: 0.8rem; }
+
+        /* ── Section layout ── */
+        .section-wrap { padding: 88px 36px; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+        .section-eyebrow {
+            display: block;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--display);
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            color: var(--navy);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 56px;
+            line-height: 1.2;
+        }
+
+        /* ── Video card ── */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
+        }
+
+        .video-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.3s;
+        }
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 56px rgba(0,0,0,0.09);
+            border-color: rgba(201,168,76,0.4);
+        }
+
+        /* Thumbnail wrapper with 16:9 ratio */
+        .video-thumb {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: var(--navy-mid);
+            cursor: pointer;
+        }
+        .video-thumb img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s var(--ease), filter 0.4s;
+            filter: brightness(0.85);
+        }
+        .video-card:hover .video-thumb img {
+            transform: scale(1.03);
+            filter: brightness(0.7);
+        }
+
+        /* Play button overlay */
+        .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px; height: 68px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+            pointer-events: none;
+        }
+        .video-card:hover .play-btn {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .play-btn svg { margin-left: 4px; }
+        .video-card:hover .play-btn svg path { fill: var(--navy); }
+
+        /* "Auf YouTube ansehen" badge */
+        .yt-badge {
+            position: absolute;
+            top: 14px; right: 14px;
+            background: rgba(0,0,0,0.6);
+            color: var(--white);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            pointer-events: none;
+        }
+
+        /* Card meta */
+        .video-meta {
+            padding: 22px 24px 26px;
+        }
+        .video-tag {
+            display: inline-block;
+            background: var(--gold-dim);
+            color: #7a5c18;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .video-meta h3 {
+            font-family: var(--display);
+            font-size: 1.15rem;
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+        .video-meta p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: gap 0.3s;
+        }
+        .video-link:hover { gap: 11px; }
+
+        /* ── More work placeholder ── */
+        .more-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 48px 32px;
+            background: var(--gray-bg);
+            border: 2px dashed var(--gray-border);
+            border-radius: 10px;
+            min-height: 260px;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .more-card:hover {
+            border-color: rgba(201,168,76,0.4);
+            background: rgba(201,168,76,0.03);
+        }
+        .more-card-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+            opacity: 0.4;
+        }
+        .more-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            max-width: 200px;
+            line-height: 1.6;
+        }
+
+        /* ── Back button ── */
+        .back-strip {
+            background: var(--gray-bg);
+            border-top: 1px solid var(--gray-border);
+            padding: 32px 36px;
+            text-align: center;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background 0.3s, transform 0.3s var(--ease);
+        }
+        .btn-back:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        /* ── Footer ── */
+        .page-footer {
+            background: var(--navy);
+            padding: 32px 36px;
+            text-align: center;
+            border-top: 1px solid rgba(201,168,76,0.1);
+        }
+        .page-footer p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.18);
+            letter-spacing: 1.5px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .nav-links  { display: none; }
+            .hamburger  { display: flex; }
+            nav         { padding: 16px 20px; }
+            .section-wrap { padding: 64px 20px; }
+            .page-hero  { padding: 120px 20px 64px; }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .page-hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE OVERLAY MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#home"       onclick="closeMobile()">Home</a>
+        <a href="index.html#experience" onclick="closeMobile()">Erfahrung</a>
+        <a href="index.html#skills"     onclick="closeMobile()">Kompetenzen</a>
+        <a href="index.html#awards"     onclick="closeMobile()">Awards</a>
+        <a href="referenzen.html"       onclick="closeMobile()">Referenzen</a>
+        <a href="index.html#contact"    onclick="closeMobile()">Kontakt</a>
+    </div>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">FS</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#experience">Erfahrung</a></li>
+                <li><a href="index.html#skills">Kompetenzen</a></li>
+                <li><a href="index.html#awards">Awards</a></li>
+                <li><a href="referenzen.html" class="active">Referenzen</a></li>
+                <li><a href="index.html#contact">Kontakt</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="page-hero-eyebrow">Portfolio &nbsp;·&nbsp; Arbeitsproben</div>
+        <div class="page-hero-divider"><span>✦</span></div>
+        <h1>Referenzen</h1>
+        <p>Eine Auswahl realisierter Kampagnen, Brand-Projekte und Video-Arbeiten.</p>
+    </div>
+
+    <!-- VIDEO REFERENZEN -->
+    <div>
+        <div class="section-wrap">
+            <div class="section-inner">
+                <span class="section-eyebrow">Video-Arbeiten</span>
+                <h2 class="section-title">Kampagnen &amp; Produktionen</h2>
+
+                <div class="video-grid">
+
+                    <!-- Video 1 – Thumbnail + YouTube-Link statt iframe (Error 153 Fix) -->
+                    <div class="video-card reveal">
+                        <a href="https://www.youtube.com/watch?v=FBjZ0LuS8_o"
+                           target="_blank" rel="noopener"
+                           aria-label="Video auf YouTube ansehen"
+                           style="display:block; text-decoration:none;">
+                            <div class="video-thumb">
+                                <!-- YouTube Thumbnail via öffentliche CDN-URL -->
+                                <img
+                                    src="https://img.youtube.com/vi/FBjZ0LuS8_o/maxresdefault.jpg"
+                                    alt="Video-Vorschau: Kampagnen-Referenz"
+                                    loading="lazy"
+                                    onerror="this.src='https://img.youtube.com/vi/FBjZ0LuS8_o/hqdefault.jpg'"
+                                >
+                                <div class="play-btn" aria-hidden="true">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M8 5.14v14l11-7-11-7z" fill="white"/>
+                                    </svg>
+                                </div>
+                                <div class="yt-badge" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                    YouTube
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-meta">
+                            <span class="video-tag">Kampagnen-Referenz</span>
+                            <h3>Brand Campaign Production</h3>
+                            <p>Realisierte Marken-Kampagne als Video-Arbeitsprobe. Klicken zum Ansehen auf YouTube.</p>
+                            <a href="https://www.youtube.com/watch?v=FBjZ0LuS8_o"
+                               target="_blank" rel="noopener"
+                               class="video-link">
+                                Auf YouTube ansehen
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Platzhalter für weitere Arbeitsproben -->
+                    <div class="more-card reveal reveal-delay-1">
+                        <div class="more-card-icon">＋</div>
+                        <p>Weitere Arbeitsproben auf Anfrage verfügbar.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK TO MAIN -->
+    <div class="back-strip">
+        <a href="index.html" class="btn-back">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Zurück zum Profil
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="page-footer">
+        <p>&copy; 2026 Franziska Steinheuer &nbsp;·&nbsp; Erstellt für professionelle Repräsentanz</p>
+    </footer>
+
+    <script>
+        const hamburger  = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        function closeMobile() {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
