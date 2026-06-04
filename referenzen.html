@@ -8,24 +8,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            /* Warme Espresso-/Beige-Palette – kein Blau */
-            --navy:        #2a2117;
-            --navy-mid:    #3a2f20;
-            --navy-light:  #4d4030;
-            --gold:        #c9a84c;
-            --gold-dim:    rgba(201,168,76,0.18);
-            --gold-glow:   rgba(201,168,76,0.07);
-            --gray-bg:     #f3ecdd;
-            --gray-border: #e7ddc8;
-            --text:        #2b2419;
-            --text-mid:    #5c5345;
-            --text-muted:  #8a7c66;
-            --white:       #ffffff;
-            --display:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --body:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --ease:        cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        /* Sanfte Boho- & Rosenholz-Palette (Ersetzt Espresso/Gold) */
+
+:root {
+    /* DUNKLE SEKTIONEN: Tiefes, rauchiges Schokoladenbraun mit Rosenholz-Unterton */
+    --navy:         #2E221F;   /* Tief dunkel (für dunkle Sektionen) */
+    --navy-mid:     #42322E;   /* Mittleres Braun */
+    --navy-light:   #57443E;   /* Helleres Ton-Braun */
+
+    /* SEKUNDÄRFARBE (#BB8C88): Als eleganter Akzent (Ersetzt das alte Gold) */
+    --gold:         #BB8C88;   /* Edles Staubrosa / Rosenholz */
+    --gold-dim:     rgba(187, 140, 136, 0.18);
+    --gold-glow:    rgba(187, 140, 136, 0.07);
+
+    /* MAIN-FARBE (#DEC9B6) & HINTERGRÜNDE */
+    --main-beige:   #DEC9B6;   /* Die exakte Main-Farbe deiner Freundin (Warmes Sand-Beige) */
+    --gray-bg:      #F6EFE9;   /* Ein ganz helles, softes Cream (perfekt als Haupt-Hintergrund) */
+    --gray-bg-flat: #DEC9B6;   /* Die Main-Farbe als Sektions-Hintergrund */
+    --gray-border:  #E7D5C5;   /* Harmonischer, weicher Rahmen */
+
+    /* TEXTFARBEN: Perfekt lesbar und farblich auf die Palette abgestimmt */
+    --text:         #362C28;   /* Sehr dunkles Warmbraun für besten Kontrast */
+    --text-mid:     #6E5D57;   /* Mittleres Graubraun */
+    --text-muted:   #A08E87;   /* Dezenter Text / Platzhalter */
+    
+    /* Basis-Konstanten */
+    --white:        #ffffff;
+    --display:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --body:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+}
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
