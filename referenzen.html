@@ -299,10 +299,12 @@
             transform: translate(-50%, -50%) scale(1.1);
         }
         .play-btn svg { margin-left: 4px; }
+        .play-btn.ext svg { margin-left: 0; }
         .video-card:hover .play-btn svg path { fill: var(--navy); }
+        .video-card:hover .play-btn.ext svg { stroke: var(--navy); }
 
-        /* "Auf YouTube ansehen" badge */
-        .yt-badge {
+        /* External-link / source badge */
+        .yt-badge, .src-badge {
             position: absolute;
             top: 14px; right: 14px;
             background: rgba(0,0,0,0.6);
@@ -533,8 +535,66 @@
                         </div>
                     </div>
 
+                    <!-- Referenz 2 – Kaufland Kollektion (externe Seite, Cover-Thumbnail) -->
+                    <div class="video-card reveal reveal-delay-1">
+                        <a href="https://unternehmen.kaufland.de/presse/newsroom/2025/januar/ein-teil-von-kaufland-sein-die-erste-kaufland-kollektion-ist-da"
+                           target="_blank" rel="noopener"
+                           aria-label="Kampagne auf kaufland.de ansehen"
+                           style="display:block; text-decoration:none;">
+                            <div class="video-thumb">
+                                <img src="assets/ref-kollektion.svg" alt="Cover: Kaufland Kollektion – Launch-Kampagne" loading="lazy">
+                                <div class="play-btn ext" aria-hidden="true">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                                </div>
+                                <div class="src-badge" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18"/><path d="M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+                                    kaufland.de
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-meta">
+                            <span class="video-tag">Kampagnenproduktion</span>
+                            <h3>Kaufland Kollektion – Launch</h3>
+                            <p>Konzeption und Produktion der Launch-Kampagne zur ersten Kaufland-Eigenkollektion. Internationale Adaption und Rollout über 8 Länder hinweg – von der kreativen Leitidee bis zur länderspezifischen Umsetzung.</p>
+                            <a href="https://unternehmen.kaufland.de/presse/newsroom/2025/januar/ein-teil-von-kaufland-sein-die-erste-kaufland-kollektion-ist-da"
+                               target="_blank" rel="noopener" class="video-link">
+                                Zur Kampagne
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Referenz 3 – Employer Branding Bildkonzept (externe Seite, Cover-Thumbnail) -->
+                    <div class="video-card reveal reveal-delay-2">
+                        <a href="https://jobs.kaufland.de/"
+                           target="_blank" rel="noopener"
+                           aria-label="Karriere-Seite jobs.kaufland.de ansehen"
+                           style="display:block; text-decoration:none;">
+                            <div class="video-thumb">
+                                <img src="assets/ref-employer.svg" alt="Cover: Employer Branding – Bildkonzept" loading="lazy">
+                                <div class="play-btn ext" aria-hidden="true">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                                </div>
+                                <div class="src-badge" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18"/><path d="M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+                                    jobs.kaufland.de
+                                </div>
+                            </div>
+                        </a>
+                        <div class="video-meta">
+                            <span class="video-tag">Bildkonzept</span>
+                            <h3>Employer Branding – Bildwelt</h3>
+                            <p>Entwicklung eines konsistenten Bild- und Gestaltungskonzepts für den Karriere-Auftritt. Eine authentische Bildsprache, die Arbeitgebermarke und Unternehmenskultur sichtbar und erlebbar macht.</p>
+                            <a href="https://jobs.kaufland.de/"
+                               target="_blank" rel="noopener" class="video-link">
+                                Zum Projekt
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
                     <!-- Platzhalter für weitere Arbeitsproben -->
-                    <div class="more-card reveal reveal-delay-1">
+                    <div class="more-card reveal reveal-delay-3">
                         <div class="more-card-icon">＋</div>
                         <p>Weitere Arbeitsproben auf Anfrage verfügbar.</p>
                     </div>
