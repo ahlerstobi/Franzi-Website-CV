@@ -16,7 +16,7 @@
   <!-- Inner ring -->
   <circle cx="100" cy="100" r="84" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.4" stroke-dasharray="3 3"/>
   <!-- Badge fill -->
-  <circle cx="100" cy="100" r="80" fill="#0a1628" opacity="0.05"/>
+  <circle cx="100" cy="100" r="80" fill="#2a2117" opacity="0.05"/>
 
   <!-- 12-point star / seal shape -->
   <path d="
@@ -37,12 +37,12 @@
   " fill="url(#goldGrad2)" opacity="0.9"/>
 
   <!-- Centre circle -->
-  <circle cx="100" cy="97" r="18" fill="#0a1628"/>
+  <circle cx="100" cy="97" r="18" fill="#2a2117"/>
   <circle cx="100" cy="97" r="15" fill="none" stroke="url(#goldGrad)" stroke-width="1"/>
   <text x="100" y="101" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#c9a84c">GBA</text>
 
   <!-- GERMAN BRAND AWARD text arc (bottom label area) -->
-  <rect x="28" y="162" width="144" height="52" rx="6" fill="#0a1628" opacity="0.7"/>
+  <rect x="28" y="162" width="144" height="52" rx="6" fill="#2a2117" opacity="0.7"/>
   <rect x="28" y="162" width="144" height="52" rx="6" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.5"/>
 
   <text x="100" y="182" text-anchor="middle"

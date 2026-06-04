@@ -6,22 +6,23 @@
     <title>Referenzen | Franziska Steinheuer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy:        #0a1628;
-            --navy-mid:    #152238;
-            --navy-light:  #1e3356;
+            /* Warme Espresso-/Beige-Palette – kein Blau */
+            --navy:        #2a2117;
+            --navy-mid:    #3a2f20;
+            --navy-light:  #4d4030;
             --gold:        #c9a84c;
             --gold-dim:    rgba(201,168,76,0.18);
             --gold-glow:   rgba(201,168,76,0.07);
-            --gray-bg:     #f4f6f9;
-            --gray-border: #e8ecf2;
-            --text:        #1a202c;
-            --text-mid:    #4a5568;
-            --text-muted:  #718096;
+            --gray-bg:     #f3ecdd;
+            --gray-border: #e7ddc8;
+            --text:        #2b2419;
+            --text-mid:    #5c5345;
+            --text-muted:  #8a7c66;
             --white:       #ffffff;
-            --display:     'Playfair Display', Georgia, serif;
+            --display:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --body:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --ease:        cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -152,7 +153,7 @@
             text-align: center;
             background:
                 radial-gradient(ellipse at 15% 60%, rgba(201,168,76,0.06) 0%, transparent 50%),
-                linear-gradient(155deg, #091526 0%, #152238 55%, #0c1d34 100%);
+                linear-gradient(155deg, #241c12 0%, #3a2f20 55%, #2e2416 100%);
             position: relative;
             overflow: hidden;
         }
@@ -175,11 +176,12 @@
         }
         .page-hero h1 {
             font-family: var(--display);
-            font-size: clamp(2.4rem, 5vw, 4rem);
-            font-weight: 800;
+            font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+            font-weight: 500;
+            text-transform: uppercase;
             color: var(--white);
-            line-height: 1.1;
-            letter-spacing: -1px;
+            line-height: 1.15;
+            letter-spacing: 4px;
             position: relative; z-index: 1;
             margin-bottom: 16px;
         }
@@ -223,12 +225,14 @@
         }
         .section-title {
             font-family: var(--display);
-            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            font-size: clamp(1.5rem, 3vw, 2rem);
             color: var(--navy);
-            font-weight: 700;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             text-align: center;
             margin-bottom: 56px;
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
         /* ── Video card ── */
@@ -333,9 +337,11 @@
         }
         .video-meta h3 {
             font-family: var(--display);
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: var(--navy);
-            font-weight: 700;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             margin-bottom: 6px;
             line-height: 1.35;
         }

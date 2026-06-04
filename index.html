@@ -6,25 +6,26 @@
     <title>Franziska Steinheuer | Head of Brand &amp; Content</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ================================================
            DESIGN TOKENS
         ================================================ */
         :root {
-            --navy:         #0a1628;
-            --navy-mid:     #152238;
-            --navy-light:   #1e3356;
-            --gold:         #c9a84c;
+            /* Warme Espresso-/Beige-Palette – kein Blau */
+            --navy:         #2a2117;   /* tiefes Espresso (dunkle Sektionen) */
+            --navy-mid:     #3a2f20;   /* mittleres Kaffeebraun */
+            --navy-light:   #4d4030;   /* helleres Taupe-Braun */
+            --gold:         #c9a84c;   /* Gold-Akzent bleibt – passt zu Beige */
             --gold-dim:     rgba(201,168,76,0.18);
             --gold-glow:    rgba(201,168,76,0.07);
-            --gray-bg:      #f4f6f9;
-            --gray-border:  #e8ecf2;
-            --text:         #1a202c;
-            --text-mid:     #4a5568;
-            --text-muted:   #718096;
+            --gray-bg:      #f3ecdd;   /* helles Beige (Sektions-Hintergrund) */
+            --gray-border:  #e7ddc8;   /* warmer Rahmen */
+            --text:         #2b2419;   /* warmes Dunkelbraun */
+            --text-mid:     #5c5345;
+            --text-muted:   #8a7c66;
             --white:        #ffffff;
-            --display:      'Playfair Display', Georgia, serif;
+            --display:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --body:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --ease:         cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -188,8 +189,8 @@
             overflow: hidden;
             background:
                 radial-gradient(ellipse at 12% 65%, rgba(201,168,76,0.07) 0%, transparent 50%),
-                radial-gradient(ellipse at 88% 20%, rgba(30,51,86,0.5) 0%, transparent 55%),
-                linear-gradient(155deg, #091526 0%, #152238 55%, #0c1d34 100%);
+                radial-gradient(ellipse at 88% 20%, rgba(77,64,48,0.5) 0%, transparent 55%),
+                linear-gradient(155deg, #241c12 0%, #3a2f20 55%, #2e2416 100%);
         }
         /* Dot-grid overlay */
         #home::before {
@@ -224,12 +225,13 @@
         }
         #home h1 {
             font-family: var(--display);
-            font-size: clamp(2.8rem, 7vw, 6rem);
-            font-weight: 800;
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 500;
+            text-transform: uppercase;
             color: var(--white);
-            line-height: 1.08;
+            line-height: 1.12;
             margin-bottom: 0;
-            letter-spacing: -1.5px;
+            letter-spacing: 4px;
             position: relative; z-index: 1;
             animation: fadeUp 0.9s var(--ease) 0.25s both;
         }
@@ -413,12 +415,14 @@
         }
         .section-title {
             font-family: var(--display);
-            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            font-size: clamp(1.6rem, 3.4vw, 2.2rem);
             color: var(--navy);
-            font-weight: 700;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             text-align: center;
             margin-bottom: 64px;
-            line-height: 1.2;
+            line-height: 1.25;
         }
         .section-title-light { color: var(--white); }
 
@@ -574,7 +578,7 @@
         .awards-section {
             background:
                 radial-gradient(ellipse at 85% 40%, rgba(201,168,76,0.05) 0%, transparent 55%),
-                linear-gradient(150deg, #091526 0%, #111f38 100%);
+                linear-gradient(150deg, #241c12 0%, #322817 100%);
         }
         .award-card {
             display: grid;
@@ -618,10 +622,12 @@
         }
         .award-info h3 {
             font-family: var(--display);
-            font-size: 1.9rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             color: var(--white);
-            line-height: 1.2;
+            line-height: 1.25;
             margin-bottom: 16px;
         }
         .award-info p {
@@ -670,11 +676,13 @@
         .contact-inner { max-width: 620px; margin: 0 auto; }
         .contact-section h2 {
             font-family: var(--display);
-            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
             color: var(--white);
-            font-weight: 700;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             margin-bottom: 18px;
-            line-height: 1.15;
+            line-height: 1.2;
         }
         .contact-section .lead {
             font-size: 0.98rem;
@@ -712,8 +720,8 @@
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            background: #0077b5;
-            color: var(--white);
+            background: var(--gold);
+            color: var(--navy);
             text-decoration: none;
             padding: 15px 32px;
             border-radius: 3px;
@@ -723,9 +731,9 @@
             transition: background 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
         }
         .btn-linkedin:hover {
-            background: #005d8f;
+            background: #d8b85c;
             transform: translateY(-3px);
-            box-shadow: 0 14px 36px rgba(0,119,181,0.4);
+            box-shadow: 0 14px 36px rgba(201,168,76,0.35);
         }
         .footer-rule {
             width: 48px; height: 1px;
@@ -768,7 +776,7 @@
         }
 
         @media (max-width: 480px) {
-            #home h1 { font-size: 2.3rem; letter-spacing: -0.5px; }
+            #home h1 { font-size: 2rem; letter-spacing: 2px; }
             .hero-ctas { flex-direction: column; align-items: stretch; }
             .btn-gold, .btn-ghost { justify-content: center; }
             .stats-grid { grid-template-columns: 1fr 1fr; }
