@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Tagging Plattform</title>
+<link rel="icon" href="assets/img/dw-logo.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <img src="assets/img/dw-logo.png" alt="Deutsche Welle Logo">
+    <div>
+      <h1>Video Tagging Plattform</h1>
+      <div class="sub">KI-gestützte Metadaten-Extraktion für Nachrichtenbeiträge</div>
+    </div>
+    <div class="spacer"></div>
+    <button class="settings-btn" id="toggleSettings" type="button">⚙ Einstellungen</button>
+  </div>
+</header>
+
+<main>
+  <!-- Eingabe -->
+  <section class="card">
+    <h2>Video analysieren <span id="modeBadge" class="mode-badge mode-demo">DEMO-MODUS</span></h2>
+    <form class="input-row" id="urlForm">
+      <input id="url" type="url" placeholder="YouTube-Link einfügen, z. B. https://www.youtube.com/watch?v=…" autocomplete="off" required>
+      <button class="primary" id="analyzeBtn" type="submit">Analysieren</button>
+      <button class="secondary" id="sampleBtn" type="button">Beispiel laden</button>
+    </form>
+    <div class="hint">Unterstützt: youtube.com/watch, youtu.be, youtube.com/shorts, youtube.com/embed</div>
+
+    <div class="settings" id="settings">
+      <div class="full">
+        <label for="apiKey">Gemini API-Key (leer lassen = Demo-Modus mit Beispielergebnis)</label>
+        <input id="apiKey" type="password" placeholder="AIza…" autocomplete="off">
+      </div>
+      <div>
+        <label for="model">Modell</label>
+        <input id="model" type="text" value="gemini-2.5-pro">
+      </div>
+      <div>
+        <label for="remember">API-Key im Browser speichern</label>
+        <select id="remember">
+          <option value="no">Nein (nur für diese Sitzung)</option>
+          <option value="yes">Ja (localStorage)</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Player + Status -->
+  <section class="grid">
+    <div class="card">
+      <h2>Video</h2>
+      <div class="player" id="player">
+        <div class="placeholder">Noch kein Video geladen.<br>Bitte oben einen YouTube-Link einfügen.</div>
+      </div>
+      <div class="status" id="status" style="margin-top:14px"><div class="spinner"></div><span id="statusText"></span></div>
+    </div>
+
+    <div class="card" id="overviewCard">
+      <h2>Überblick</h2>
+      <div id="overview" class="hint">Nach der Analyse erscheinen hier Titel, Thema, Zusammenfassung und Schlagworte.</div>
+    </div>
+  </section>
+
+  <!-- Ergebnisse -->
+  <section class="card" id="results">
+    <h2>Extrahierte Metadaten</h2>
+    <div id="demoNote" class="demo-note" style="display:none">
+      Demo-Modus: Angezeigt wird das mit Gemini erzeugte Beispielergebnis (DW „Fokus Europa“ – Tarent/Ilva).
+      Für die Live-Analyse beliebiger Videos unter „Einstellungen“ einen Gemini API-Key hinterlegen.
+    </div>
+    <div class="tabs" id="tabs">
+      <button data-tab="t-general" class="active">Sendedaten</button>
+      <button data-tab="t-persons">Personen</button>
+      <button data-tab="t-quotes">Zitate (O-Töne)</button>
+      <button data-tab="t-ocr">Text im Bild (OCR)</button>
+      <button data-tab="t-json">JSON</button>
+    </div>
+    <div class="tabpane active" id="t-general"></div>
+    <div class="tabpane" id="t-persons"></div>
+    <div class="tabpane" id="t-quotes"></div>
+    <div class="tabpane" id="t-ocr"></div>
+    <div class="tabpane" id="t-json"><pre class="json" id="jsonOut"></pre></div>
+
+    <div class="actions">
+      <button class="secondary" id="copyJson" type="button">JSON kopieren</button>
+      <button class="secondary" id="downloadJson" type="button">JSON herunterladen</button>
+      <button class="secondary" id="downloadCsv" type="button">Personen als CSV</button>
+    </div>
+  </section>
+</main>
+
+<footer>Video Tagging Plattform · Demonstrator · Analyse via Google Gemini</footer>
+
+<script src="config.js"></script>
+<script src="assets/js/sample-data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
